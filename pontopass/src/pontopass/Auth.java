@@ -7,7 +7,7 @@ package pontopass;
 *  @Projeto			API: Java												*
 *  @Program			Interface para conexão e autenticação no Pontopass		*
 *  @Author  	    Guilherme Cesar Leite                               	*
-*  @version			17/05/2013					                        	*
+*  @Date			17/05/2013					                        	*
 *                                                                           *
 *  Auth.java																*
 *  Descrição:																*
@@ -26,6 +26,7 @@ package pontopass;
 *	1		17/05/2013		Guilherme Leite  ---  Versão inicial		    *
 *	1.0.1	18/06/2013		Guilherme Leite	 ---  Tratamento de Exceções	*
 *	1.1		27/02/2014		Guilherme Leite	 001  Validação Whatsapp		*
+*	1.1.1   14/04/2014		Guilherme Leite  001  Correção de bugs			*
 *																			*
 ****************************************************************************/
 /*
@@ -177,9 +178,9 @@ public class Auth {
 			else lastError = status;
 		} catch (IOException e) {
 			lastError = status;
-			return (status == 0 ? true : false);
+			return (status == 0);
 		} 
-		return (status == 0 ? true : false);
+		return (status == 0);
 	}
 	
     /**
@@ -338,7 +339,7 @@ public class Auth {
 						ask = true;
 					}
 					else lastError = status;
-					return (status == 0 ? true : false);
+					return (status == 0);
 				}
 				else lastError = status;
 			} catch (IOException e) {
@@ -347,7 +348,7 @@ public class Auth {
 			}
 		}
 		else return false;
-		return (status == 0 ? true : false); 
+		return (status == 0); 
 	}
 	
     /**
@@ -383,12 +384,12 @@ public class Auth {
 		case 2: // sms
 			urlString = (integrationType == 1 ? ("https://" + path + "/validate/sms/" + session + "/" + code ) : ("https://" + path + "/validate/sms/" + session + "/" + code + "/" + ip +"/" + user_agent));
 			break;
-		case 3: // push
-			validated = true;
-			break;
-		case 4: // token
+		case 3: // token
 			urlString = (integrationType == 1 ? ("https://" + path + "/validate/token/" + session + "/" + code ) : ("https://" + path + "/validate/token/" + session + "/" + code + "/" + ip +"/" + user_agent));
 			break;	
+		case 4: // push
+			validated = true;
+			break;
 		// 001 - Inicio - Inclusão do método de validação whatsapp 
 		case 5: // whatsapp
 			validated = true;

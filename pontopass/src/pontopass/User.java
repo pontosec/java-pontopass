@@ -7,7 +7,7 @@ package pontopass;
 *  @Projeto			API: Java  			   									*
 *  @Programa		Interface para gerenciamento de dados do usuário		*
 *  @Author  	    Guilherme Cesar Leite                               	*
-*  @version			17/05/2013					                        	*
+*  @Date			17/05/2013					                        	*
 *                                                                           *
 *  User.java																*
 *  Descrição:																*
@@ -23,7 +23,7 @@ package pontopass;
 *	Versão	Data			Desenvolvedor	 Cod  Descrição	                *
 *	1		17/05/2013		Guilherme Leite  ---  Versão inicial		    *
 *	1.0.1	18/07/2013		Guilherme Leite	 ---  Tratamento de Exceções	*
-*																			*
+*	1.0.2   14/04/2014		Guilherme Leite  ---  Correção de bugs			*
 ****************************************************************************/
 import java.io.IOException;
 import java.net.URL;
@@ -415,7 +415,7 @@ public class User extends Auth {
 			lastError = -999;
 			return false;
 		} 
-		return (status == 0 ? true : false);
+		return (status == 0);
 	}
 	
 	
@@ -478,9 +478,9 @@ public class User extends Auth {
 			else lastError = status;
 		} catch (IOException e) {
 			lastError = status;
-			return (status == 0 ? true : false);
+			return (status == 0);
 		} 
-		return (status == 0 ? true : false);
+		return (status == 0);
 	}
 	
     /**
@@ -544,9 +544,9 @@ public class User extends Auth {
 			else lastError = status;
 		} catch (IOException e) {
 			lastError = status;
-			return (status == 0 ? true : false);
+			return (status == 0) ;
 		} 
-		return (status == 0 ? true : false);
+		return (status == 0);
 	}
 		
 }
